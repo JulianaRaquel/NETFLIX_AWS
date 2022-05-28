@@ -5,7 +5,7 @@
         <img class="w-2/12" src="{% static 'images/hashflix.png' %}">
     </a>
     </div>
-
+    {% if user.is_authenticated %}
     <div class="w-6/12 flex flex-nowrap justify-end">
         <div class="mr-2">
             <form method="get" action="{% url 'filme:pesquisafilme' %}">
@@ -13,22 +13,28 @@
                 <input type="submit" value="">
             </form>
         </div>
-
+    </div>
         <div class="mr-2">
-            <a href="#">
-            <button class="bg-red-600 text-white py-1 px-3 rounded-md">
-                login
+            <a href="{% url 'filme:logout' %}">
+            <button class="bg-red-600 text-white px-3 rounded-md">
+                Sair
             </button>
             </a>
         </div>
-
         <div class="mr-2">
-             <a href="#">
-            <button class="bg-red-600 text-white py-1 px-3 rounded-md">
+             <a href="{% url 'filme:editarperfil' request.user.pk %}">
+            <button class="bg-red-600 text-white px-3 rounded-md">
                 Editar Perfil
             </button>
             </a>
         </div>
-
-    </div>
+    {% else %}
+     <div class="mr-2">
+            <a href="{% url 'filme:login' %}">
+            <button class="bg-red-600 text-white py-1 px-3 rounded-md">
+                login
+            </button>
+            </a>
+     </div>
+     {% endif %}
 </nav>
