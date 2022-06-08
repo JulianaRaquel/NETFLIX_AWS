@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/HASHFLIX.iml" filepath="$PROJECT_DIR$/.idea/HASHFLIX.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/COPIA_NETFLIX_DJANGO.iml" filepath="$PROJECT_DIR$/.idea/COPIA_NETFLIX_DJANGO.iml" />
     </modules>
   </component>
 </project>
