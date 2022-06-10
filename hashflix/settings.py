@@ -132,7 +132,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', )
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', default=False)
 
 # configuração para o S3
 
@@ -155,7 +155,7 @@ if AWS_ACCESS_KEY_ID:
     ADMIN_MEDIA_PREFIX = STATIC_URL + '/admin'
 
     # configurações dos uploads de arquivos
-    DEFAULT_FILE_STORAGE = 's3_folder_storage.s3.DefaultStorage'
+    DEFAULT_FILE_STORAGE = 's3_folder_storage.s3.StaticStorage'
     DEFAULT_S3_PATH = 'media'
     MEDIA_ROOT = f'/{DEFAULT_S3_PATH}/'
     MEDIA_URL = f'//s3.amazonaws.com/{AWS_STORAGE_BUCKET_NAME}/{DEFAULT_S3_PATH}/'
