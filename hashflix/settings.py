@@ -129,8 +129,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'static/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+COLLECTFAST_ENABLED = False
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', default=False)
 
@@ -139,13 +141,15 @@ AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', default=False)
 if AWS_ACCESS_KEY_ID:
     AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
-    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400', }
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
     AWS_PRELOAD_METADATA = True
     AWS_AUTO_CREATE_BUCKET = False
     AWS_QUERYSTRING_AUTH = True
     AWS_S3_CUSTOM_DOMAIN = None
     AWS_DEFAULT_ACL = 'private'
 
+    COLLECTFAST_STRATEGY = "collectfast.strategies.boto3.Boto3Strategy"
+    COLLECTFAST_ENABLED = True
 
     # configurações dos arquivos estáticos
     STATICFILES_STORAGE = 's3_folder_storage.s3.StaticStorage'
@@ -174,5 +178,13 @@ LOGIN_URL = 'filme:login'
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'hh5dq1tic',
+    'API_KEY': '786349336259881',
+    'API_SECRET': 'TCrxIpZLqpCYexyEOkpPmgPxerg',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # https://github.com/django-crispy-forms/crispy-bootstrap5
