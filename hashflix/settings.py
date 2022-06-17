@@ -5,6 +5,8 @@ import storages.backends.s3boto3
 from decouple import config, Csv
 from dj_database_url import parse
 from functools import partial
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -136,10 +138,10 @@ DISABLE_COLLECTSTATIC=1
 #DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # configuração SENTRY
-"""SENTRY_DSN=config('SENTRY_DSN', default=None)
+SENTRY_DSN=config('SENTRY_DSN', default=None)
 
 if SENTRY_DSN:
-    sdk.init(dsn=SENTRY_DSN, integrations=[DjangoIntegration()])"""
+    sentry_sdk.init(dsn=SENTRY_DSN, integrations=[DjangoIntegration()])
 
 
 
