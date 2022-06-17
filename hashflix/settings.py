@@ -135,5 +135,11 @@ AWS_DEFAULT_ACL = None
 DISABLE_COLLECTSTATIC=1
 #DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+# configuração SENTRY
+"""SENTRY_DSN=config('SENTRY_DSN', default=None)
+
+if SENTRY_DSN:
+    sdk.init(dsn=SENTRY_DSN, integrations=[DjangoIntegration()])"""
+
 
 
